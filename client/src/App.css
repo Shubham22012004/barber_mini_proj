@@ -1,0 +1,65 @@
+
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+
+  /* allow scrolling but hide scrollbar */
+  overflow-y: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.navbar {
+  background: #222;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+
+
+.hero {
+  background: url('https://images.unsplash.com/photo-1604709177225-c79d23f7d7ec?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.services {
+  display: flex;
+  /* gap: 20px; */
+  padding: 20px;
+}
+
+.service-card {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  width: 200px;
+  text-align: center;
+}
+
+.booking-form {
+  background: #fff;
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}

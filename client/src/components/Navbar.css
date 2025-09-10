@@ -1,0 +1,30 @@
+.navbar {
+  position: fixed;    
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;      
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #222;
+  color: white;
+  box-sizing: border-box;
+}
+
+.navbar a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+
+body {
+  margin: 0;
+  padding-top: 65px; 
+}
