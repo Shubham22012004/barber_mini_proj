@@ -1,0 +1,71 @@
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("https://images.unsplash.com/photo-1604709177225-c79d23f7d7ec?auto=format&fit=crop&w=1350&q=80")
+    no-repeat center center/cover;
+  position: relative;
+}
+
+.login-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* dark overlay */
+  z-index: 0;
+}
+
+.login-form {
+  background: rgba(34, 34, 34, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  border: 2px solid #ff6600;
+  text-align: center;
+}
+
+.login-form h2 {
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+.login-form input {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid #555;
+  background: #fff;
+  color: #000;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #ff6600;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.6);
+}
+
+.login-form button {
+  padding: 12px;
+  background: #ff6600;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.login-form button:hover {
+  background: #e05500;
+  transform: scale(1.05);
+}

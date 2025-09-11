@@ -1,9 +1,20 @@
+
+
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AdminPanel.css";
 
 export default function AdminPanel() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  // ✅ Redirect if not logged in
+  useEffect(() => {
+    if (!localStorage.getItem("adminAuth")) {
+      navigate("/admin-login"); 
+    }
+  }, [navigate]);
 
   const fetchBookings = async () => {
     try {
@@ -19,7 +30,6 @@ export default function AdminPanel() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this booking?")) return;
-
     try {
       const res = await fetch(`http://localhost:5000/api/bookings/${id}`, {
         method: "DELETE",
@@ -44,40 +54,57 @@ export default function AdminPanel() {
   return (
     <div className="admin-panel">
       <h2>Admin Panel - All Bookings</h2>
+
       {bookings.length === 0 ? (
         <p>No bookings yet.</p>
       ) : (
-        <table border="1" cellPadding="5" style={{ borderCollapse: "collapse", width: "100%" }}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Email</th>
-              <th>Service</th>
-              <th>Barber</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {bookings.map((b) => (
-              <tr key={b._id}>
-                <td>{b.name}</td>
-                <td>{b.phone}</td>
-                <td>{b.email}</td>
-                <td>{b.service}</td>
-                <td>{b.barber}</td>
-                <td>{b.date}</td>
-                <td>{b.time}</td>
-                <td>
-                  <button onClick={() => handleDelete(b._id)}>❌ Delete</button>
-                </td>
+        <>
+          <table border="1" cellPadding="5" style={{ borderCollapse: "collapse", width: "100%" }}>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Service</th>
+                <th>Barber</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {bookings.map((b) => (
+                <tr key={b._id}>
+                  <td>{b.name}</td>
+                  <td>{b.phone}</td>
+                  <td>{b.email}</td>
+                  <td>{b.service}</td>
+                  <td>{b.barber}</td>
+                  <td>{b.date}</td>
+                  <td>{b.time}</td>
+                  <td>
+                    <button onClick={() => handleDelete(b._id)}>❌ Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* ✅ Centered Logout Button */}
+          <div className="logout-container">
+            <button 
+              className="logout-btn"
+              onClick={() => {
+                localStorage.removeItem("adminAuth");
+                navigate("/admin-login");
+              }}
+            >
+              🚪 Logout
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
 }
+
